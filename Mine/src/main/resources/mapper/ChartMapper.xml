@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.itwill.chart.mapper.ChartMapper">
+
+	<select id="age18" resultType="int">
+	<![CDATA[
+		select count(*) from (select
+		trunc(months_between(sysdate, birth)/12) as age from agechart where pno=#{pno})
+		where  age < 19]]>
+		
+	</select>
+	
+	<select id="age23" resultType="int">
+	<![CDATA[ 	select count(*) from (select
+		trunc(months_between(sysdate, birth)/12) as age from agechart where pno=#{pno})
+		where  age>18 and age<24 ]]>
+	</select>
+
+	<select id="age28" resultType="int">
+		select count(*) from (select
+		trunc(months_between(sysdate, birth)/12) as age from agechart where pno=#{pno})
+		<![CDATA[  where age>23 and age<29  ]]>
+	</select>
+	
+	<select id="age33" resultType="int">
+		select count(*) from (select
+		trunc(months_between(sysdate, birth)/12) as age from agechart where pno=#{pno})
+		<![CDATA[ where age>28 and age<34 ]]>
+	</select>
+	
+	<select id="age39" resultType="int">
+		select count(*) from (select
+		trunc(months_between(sysdate, birth)/12) as age from agechart where pno=#{pno})
+		<![CDATA[ where age>33 and age<40 ]]>
+	</select>
+	
+	<select id="age40" resultType="int">
+		select count(*) from (select
+		trunc(months_between(sysdate, birth)/12) as age from agechart where pno=#{pno})
+		 <![CDATA[where age>39 ]]>
+	</select>
+	
+	<insert id="ageChartInsert">
+		insert into ageChart (pno, userid, birth, gender) values(#{pno}, #{userId},#{birth},#{gender})
+	</insert>
+
+	<select id="male" resultType="int">
+		select count(*) from agechart where gender ='male' and pno =#{pno}
+	
+	</select>
+	
+	<select id="female" resultType="int">
+		select count(*) from agechart where gender ='female' and pno =#{pno}
+	
+	</select>
+	
+	<select id="sellCount" resultType="int">
+		select count(*) from ageChart where pno =#{pno}
+	</select>
+	
+	<select id="recommandReviews" resultType="int">
+		select count(*) from recommand where pno =#{pno}
+	</select>
+</mapper>

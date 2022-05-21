@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.itwill.user.mapper.UserMapper">
+	<insert id="insert" parameterType="UserVO">
+	INSERT INTO ${TABLE_USERINFO} (${COL_USERID},${COL_USERNAME},${COL_USERPW},${COL_USERPHONE},${COL_USEREMAIL},${COL_USERZIPCODE},${COL_USERADDR},${COL_USESRADDRDETAIL},${COL_USERBIRTH},${COL_GENDER})
+	VALUES (#{userId},#{userName},#{userPw},#{userPhone},#{userEmail},#{userZipCode},#{userAddr},#{userAddrDetail},#{userBirth},#{gender})
+	</insert>
+	
+	<select id="login" resultType="UserVO">
+	SELECT * FROM ${TABLE_USERINFO} WHERE ${COL_USERID} = #{userId} AND ${COL_USERPW} = #{userPw}
+	</select>
+	
+	<select id="check" resultType="UserVO">
+	SELECT * FROM ${TABLE_USERINFO} WHERE ${COL_USERID} = #{userId}
+	</select>
+	
+	<select id="cartSelect" resultType="CartVO">
+	SELECT * FROM ${TABLE_CART} WHERE ${COL_USERID} = #{userId}
+	</select>
+	
+	<insert id="cartInsert" parameterType="CartVO">
+	INSERT INTO ${TABLE_CART} (${PNO},${COL_QUANTITY},${COL_PRICE},${COL_USERID},${PNAME},${P_IMGADDR})
+	VALUES (#{pno},#{quantity},#{price},#{userId},#{pName},#{p_imgAddr})
+	</insert>
+	
+	<select id="findId" resultType="UserVO">
+	SELECT * FROM ${TABLE_USERINFO} WHERE ${COL_USEREMAIL} = #{userEmail}
+	</select>
+	
+	<select id="findIdCheck" resultType="int">
+	SELECT COUNT(*) FROM ${TABLE_USERINFO} WHERE ${COL_USEREMAIL} = #{userEmail}
+	</select>
+	
+	<update id="update">
+	update  ${TABLE_USERINFO} SET ${COL_USERNAME}=#{userName} , ${COL_USERPW}= #{userPw}, ${COL_USERPHONE}=#{userPhone},${COL_USEREMAIL}=#{userEmail},${COL_USERZIPCODE}=#{userZipCode},${COL_USERADDR}=#{userAddr},${COL_USESRADDRDETAIL}=#{userAddrDetail}, ${COL_GENDER}=#{gender} where ${COL_USERID}=#{userId}
+	
+	</update>
+	
+	<delete id="delete">
+			delete from cart where pno=#{pno}
+	</delete>
+	
+	<select id="findPwCheck" resultType="UserVO">
+		select * from userinfo where userid= #{userId} and userEmail=#{userEmail}
+	</select>
+	
+	<update id="authNum">
+		update userinfo set auth= #{ranNum} where userid=#{userId}
+	</update>
+	
+	<select id="ranNum" resultType="int">
+		select auth from userinfo where userId=#{userId}
+	</select>
+	
+	<select id="authCheck" resultType="String">
+		select userPw from userinfo where userId=#{userId} and auth= #{authNum}
+	</select>	
+	
+	<update id="registPw">
+		update ${TABLE_USERINFO} set ${COL_USERPW}=#{ranNum} where ${COL_USERID}=#{userId}
+	</update>
+
+  </mapper>

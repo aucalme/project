@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+        http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- Oracle DataSource(DBCP: Database Connection Pool) 객체(bean) 설정 -->
+	<!-- DataSource ds = new DriverManagerDataSource(); ds.setDriverClassName("oracle.jdbc.OracleDriver"); -->
+	<bean id="ds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="mine" />
+		<property name="password" value="mine" />
+	</bean>
+
+
+	<!-- MyBatis 프레임워크에서 사용할 SqlSessionFactory 객체(SqlSession을 생성하기 위한 객체) 설정 -->
+	<!-- SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBean(); 
+		sqlSessionFactory.setDataSource(ds); -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds" />
+		<property name="configLocation"
+			value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations"
+			value="classpath:/mapper/*.xml" />
+	</bean>
+
+
+	<!-- SqlSession 객체(SQL 문장 실행, 결과 처리를 담당) 설정 -->
+	<!-- SqlSession sqlSession = new SqlSessionTemplate(sqlSessionFactory); -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- 스프링 컨테이너가 edu.spring.ex02.persistence 패키지와 그 하위 패키지의 컴포넌트들을 생성, 관리. -->
+	<!-- <context:component-scan base-package="com.itwill.mine.persistence"></context:component-scan> 
+		<context:component-scan base-package="com.itwill.min.service"></context:component-scan> -->
+
+	<!-- 매퍼(mapper) 객체를 생성, 관리 -->
+	<mybatis-spring:scan
+		base-package="com.itwill.*.mapper" />
+
+
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="port" value="587"/>
+		<property name="username" value="minji025594"/>
+		<property name="password" value="ap351294mj!"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+				
+			</props>
+		</property> 
+	</bean>
+
+	
+
+</beans>
+    

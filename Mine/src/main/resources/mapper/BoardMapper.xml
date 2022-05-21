@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwill.board.mapper.BoardMapper">
+
+	<select id="getTotal" resultType="int">
+		select count(*) as total
+		from product
+		where
+		<if test="category!=null">
+		<![CDATA[ pcategory like '%'||#{category}||'%'
+		]]>
+		</if>
+	</select>
+
+
+	<select id="getList" resultType="ProductVO">
+		<!-- select * from ( select rownum rn, a.* from( select * from product 
+			where <if test="category !=null"> <![CDATA[ category like '%'||#{category}||'%' 
+			]]> </if> <![CDATA[ order by price desc)a ) where rn > (#{pageNum}-1)*#{amount} 
+			and rn <=#{pageNum}*#{amount} ]]> -->
+
+		select * from(
+		select rownum rn, a.* from(
+		select * from product where
+		<if test="category !=null"> <![CDATA[ pcategory like #{category}]]></if>
+		and
+		
+		<if test="searchName !=null"> pname like '%' || #{searchName} || '%'</if>
+		order by price desc) a
+		)
+            <![CDATA[
+            where rn> (#{pageNum}-1)*#{amount} and rn <= #{pageNum}*#{amount}]]>
+
+	</select>
+
+	<select id="detail" resultType="ProductVO">
+		select * from product where pno=
+		#{pno}
+	</select>
+
+	<update id="viewsUpdate">
+		update product set views= views+1 where pno= #{pno}
+	</update>
+	
+	<select id="cartProduct" resultType="ProductVO">
+		select * from product where pno= #{pno}
+	
+	</select>
+	
+	<insert id="recommandInsert" parameterType="RecommandVO">
+		insert into ${TABLE_RECOMMAND} (${PNO}, ${HEIGHT}, ${WEIGHT}, ${REVIEWS}, ${PSIZE}, ${COL_GENDER},${REGDATE}) 
+		values(#{pno},#{height},#{weight},#{reviews},#{pSize},#{gender},sysdate)
+	</insert>
+	
+	<select id="getRecommandList" resultType="RecommandVO">
+		select * from ${TABLE_RECOMMAND}
+	</select>
+	
+</mapper>

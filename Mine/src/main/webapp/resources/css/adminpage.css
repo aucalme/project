@@ -1,0 +1,293 @@
+.adminpage-section {
+    margin-top: 10px;
+}
+.adminpage-container {
+
+    width: 1200px;
+
+
+    max-width: none!important;
+}
+
+.adminpage-container aside {
+    background-color: #eee;
+    height: 500px;
+    position: absolute;
+    left: 35px;
+}
+
+.adminpage-container aside ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+
+    background-color: #eee;
+}
+
+.adminpage-container aside li {
+    padding: 10px;
+    font-weight: 600;
+}
+
+.adminpage-container aside li:hover {
+    cursor: pointer;
+    background-color: #ddd;
+}
+
+.adminpage-container .aside-menu-title {
+    padding: 10px;
+    font-weight: 700;
+    background-color: #ccc;
+}
+
+.adminpage-container .product-regist-area {
+    display: none;
+}
+
+/*---------- �긽�뭹 愿�由� ------------*/
+/* 寃��깋 �쁺�뿭*/
+.adminpage-container .search-wrap {
+    padding: 20px;
+}
+
+.adminpage-container .search-inner {
+    border: 1px dashed #777;
+    margin-bottom: 10px;
+}
+
+.adminpage-container .search-inner form {
+    padding: 10px;
+}
+
+.adminpage-container .search-tag-table {
+    margin: 0 auto;
+}
+
+.adminpage-container .search-tag-table th {
+    width: 50px;
+}
+
+.adminpage-container .search-tag-table td {
+    padding: 5px;
+    padding-right: 20px;
+    text-align: left;
+}
+
+.adminpage-container .search-tag-table span {
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.adminpage-container .search-line {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.adminpage-container .search-line .search-input {
+    width: 350px;
+    border-radius: 0;
+    display: inline-block;
+    height: 35px;
+}
+
+.adminpage-container .search-line .search-product-btn {
+    width: 10%;
+    height: 35px;
+    border-radius: 0;
+    vertical-align: initial;
+}
+
+.adminpage-container .adminpage-searchform {
+	display: inline-block;
+	width: 140px;
+	border-radius: 0;
+}
+
+.adminpage-container .search-select {
+	display: inline-block;
+	border-radius: 0;
+	width: 100px;
+}
+.adminpage-container input[type="number"]::-webkit-outer-spin-button,
+.adminpage-container input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* 寃��깋 �쁺�뿭 �걹*/
+
+
+/* �뜲�씠�꽣媛� 蹂댁뿬吏� �쁺�뿭 �떆�옉*/
+.adminpage-container .data-btn-line {
+    position: sticky;
+    height: 35px;
+    top: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.adminpage-container .data-btn-line button {
+    float: right;
+    border-radius: 0;
+    margin-left: 2px;
+}
+
+.adminpage-container .sticky-table-header {
+    position: sticky;
+    top: 35px;
+    background-color: #ddd;
+}
+
+.adminpage-container .data-inner {
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.adminpage-container .data-inner table {
+    width: 100%;
+} 
+
+
+
+.adminpage-container .data-table th {
+    text-align: center;
+}
+
+.adminpage-container .data-table td {
+    vertical-align: baseline;
+}
+
+.adminpage-container .data-wrap {
+    padding: 10px;
+    height: 650px;
+}
+
+.adminpage-container td {
+    text-align: center;    
+}
+
+.adminpage-container .product-thumbnail {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+}
+
+.adminpage-container .product-thumbnail img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.adminpage-container .product-data-btn {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* �닔�젙�슜 �뤌*/
+#detailModal .update-form,
+#adminpageProductlist .update-form {
+	display: none;
+}
+
+#adminpageProductlist .update-img {
+	display: none;
+}
+
+#adminpageProductlist .update-name {width: 145px;}
+#adminpageProductlist .update-origin {width: 43px;}
+#adminpageProductlist .update-volume {width: 47px;}
+#adminpageProductlist .update-price {width: 48px;}
+#adminpageProductlist .update-alcohol {width: 28px;}
+#detailModal .update-detail {height: 250px; resize:none;}
+/* �뜲�씠�꽣媛� 蹂댁뿬吏� �쁺�뿭 �걹*/
+/*---------- �긽�뭹 愿�由� �걹 ------------*/
+
+/*---------- �긽�뭹 �벑濡� ------------*/
+.adminpage-container .regist-pagetitle,
+.adminpage-container .manage-pagetitle {
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+}
+.adminpage-container .regist-wrap {
+    width: 100%;
+    padding: 20px;
+}
+
+.adminpage-container .regist-table th {
+    width: 150px;
+    vertical-align: middle;
+}
+
+.adminpage-container .regist-table input,
+.adminpage-container .regist-table select,
+.adminpage-container .regist-table textarea {
+    border-radius: 0;
+    resize: none;
+}
+
+.adminpage-container .regist-table .img-td {
+    width: 250px;
+}
+.adminpage-container .regist-table .img-wrap {
+    padding: 5px;
+    height: 250px;
+}
+
+.adminpage-container .regist-table .img-inner {
+    width: 100%;
+    height: 250px;
+}
+
+.adminpage-container .regist-table .img-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.adminpage-container .regist-table .img-file-btn-box {
+    height: 40px;
+    line-height: 40px;
+}
+
+.adminpage-container .file-label,
+.adminpage-container .img-file-btn-box label {
+    display: inline-block;
+}
+
+.adminpage-container input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border:0;
+}
+
+.flex-center{
+	display:flex;
+	justify-content: center;
+}
+
+
+/* 梨꾪똿諛� 紐⑸줉 */
+
+
+/* 愿�由ъ옄 - 梨꾪똿諛� 紐⑸줉*/
+.adminchat-chatlist > thead > tr > th {
+	text-align: center;
+
+}
+
+
+

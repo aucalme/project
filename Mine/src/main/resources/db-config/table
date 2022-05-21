@@ -1,0 +1,88 @@
+CREATE TABLE USERINFO 
+(
+  USERID VARCHAR2(100 BYTE) primary key
+, USERPW VARCHAR2(100 BYTE) 
+, USERNAME VARCHAR2(100 BYTE) 
+, USERPHONE VARCHAR2(100 BYTE) 
+, USEREMAIL VARCHAR2(100 BYTE) 
+, USERZIPCODE NUMBER 
+, USERADDR VARCHAR2(100 BYTE) 
+, USERADDRDETAIL VARCHAR2(100 BYTE) 
+, USERBIRTH VARCHAR2(100 BYTE) DEFAULT sysdate );
+
+
+
+create table product(
+
+
+    pno number primary key,
+    pCategory varchar2(50 byte) not null,
+    pName varchar2(100 byte) not null,
+    ptitle varchar2(100 byte) not null,
+    pbrand varchar2(100 byte) not null,
+    uniquename varchar2(100 byte) not null,
+    price varchar2(100 byte) not null,
+    pDetail varchar2(1000 byte) not null,
+    p_imgAddr varchar2(300 byte) not null,
+    regdate DATE default sysdate,
+    views number default 0 not null,
+    plike number default 0 not null
+);
+
+create table agechart(
+    pno number not null,
+    userId varchar2(100) not null,
+    birth date default sysdate,
+    gender varchar2(30) not null
+);
+
+
+create table recommand(
+ pno number not null,
+ height number not null,
+ weight number not null,
+ reviews varchar2(30) not null,
+ psize varchar2(30) not null,
+ gender varchar2(30) not null,
+ regdate date default sysdate not null,
+ recdate varchar2(100) default '' not null
+);
+
+alter table product add views number default 0 not null;
+alter table product add plike number default 0 not null;
+
+
+insert into mn5544 (adminid, adminpw) values  ('qwer1234', 'rewq4321');
+
+select * from
+( select rownum rn, a.* from
+(select * from product order by pno desc) a
+)
+where rn between 1 and 8;
+
+select * from product;
+
+select count(*) as total
+from product 
+where pcategory like '%'||'TOP'||'%';
+commit;
+
+select * from(
+    select rownum rn, a.* from(
+        select * from product  order by price desc) a
+            )
+            where rn> (2-1)*8 and rn <= 2*8;
+    
+
+    regdate DATE default sysdate);
+
+create table cart(
+	USERID VARCHAR2(100 BYTE) primary key,
+	PRODUCT	VARCHAR2(100 BYTE),
+	QUANTITY	NUMBER	not null,
+	PRICE	NUMBER	not null,
+	DELIVERYFEE	NUMBER,
+	TOTALPRICE	NUMBER	not null);
+
+
+

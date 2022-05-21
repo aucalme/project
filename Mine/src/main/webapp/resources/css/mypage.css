@@ -1,0 +1,190 @@
+/* body, div, ul, li, section, a, table, p, canvas, img { 
+    border: 1px solid red;
+} */
+
+/* MYPAGE */
+/* 헤더영역 */
+.logo {
+    display: inline-block;
+    font-size: 40px;
+    letter-spacing: 10px;
+    padding-right: 800px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+#search {
+    display: inline-block;
+    margin-bottom: 30px;
+}
+.headlist{
+    display: inline-block;
+    float: right;
+    margin: 15px 20px 0 15px;
+}
+.headlist li{
+    display: inline-block;
+    margin-right: 0;
+    padding: 20px 10px;
+}
+.menu {
+    background-color: #000;
+    height: 50px;
+}
+.productlist{
+    width: 810px;
+    margin: 0 auto;
+}
+.productlist>li{
+    float: left;
+    width: 160px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #000;
+    position: relative;
+}
+.productlist>li:hover .sublist {
+    display: block;
+}
+.productlist>li a {
+    display: block;
+    color: #fff;
+}
+.productlist>li a:hover{
+    color: rgb(28, 155, 144);
+    background-color: #333;
+}
+.sublist {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+.sublist li {
+    background-color: #555;
+}
+.sublist li a:hover {
+    background-color: #333;
+}
+/* 내용 영역 */
+.mypage{
+    text-align: center;
+    padding: 100px;
+    font-size: 50px;
+}
+.mypage small {
+    font-size: 25px;
+}
+.join-form {
+    margin: 50px 500px;
+}
+
+.body {
+    box-sizing: border-box;
+    margin: 0px;
+  }
+  .jb-container {
+    height: 100vh;
+    background-color: rgba(12, 12, 12,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .jb-item {
+    padding: 50px;
+    background-color: #ddd;
+  }
+  .jb-item h2{
+      text-align: center;
+  }
+  .jb-item p{
+      padding: 20px;
+  }
+  .jb-item input{
+      margin-left: 30px;
+      padding: 10px 15px;
+  }
+  /* 주문상품영역 */
+  .payment>h3 {
+      margin: 20px 300px;
+  }
+  .payment>table {
+      border: 1px solid gray;
+      padding: 20px;
+      margin: 20px;
+      margin-left: 10%;
+  }
+  .payment table th {
+      padding: 10px 40px;
+      border-bottom: 1px solid gray;
+  }
+  .payment table td {
+      text-align: center;
+      padding: 20px;
+  }
+  .payment .img {
+    width: 100px;
+    height: 100px;
+}
+  .payment ul {
+      margin-left: 300px;
+  }
+  .payment ul li {
+      padding: 15px;
+  }
+  .total {
+      color: rgb(240, 62, 17);
+      font-size: 24px;
+  }
+  #chk_pay {
+      margin: 20px;
+      text-align: center;
+      margin-left: 300px;
+  }
+  .payment>p {
+      margin: 20px 0 20px 300px;
+  }
+  #paybtn {
+      padding: 10px 70px;
+      margin: 20px 0 50px 650px;
+      background-color: #000;
+      color: #fff;
+      font-weight: bold;
+  }
+
+  /* 장바구니 영역 */
+
+  .cart>h3 {
+      margin: 20px 300px;
+  }
+  .cart>table {
+    border: 1px solid gray;
+    padding: 20px;
+    margin: 20px;
+    margin-left: 10%;
+  }
+  .cart table th {
+    padding: 10px 40px;
+    border-bottom: 1px solid gray;
+}
+.cart table td {
+    text-align: center;
+    padding: 20px;
+}
+.cart .img {
+    width: 100px;
+    height: 100px;
+}
+.cart p {
+    text-align: center;
+}
+#buybtn {
+    padding: 10px 70px;
+    margin: 20px 0 50px 650px;
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+}

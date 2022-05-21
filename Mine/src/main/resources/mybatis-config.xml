@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 마이바티스 설정파일 type에 명시된 클래스를 함축이름으로 사용합니다. -->
+<configuration>
+
+
+
+	<properties>
+		<property name="TABLE_UPLOAD" value="product" />
+		<property name="PNO" value="pno" />
+		<property name="PCATEGORY" value="pCategory" />
+		<property name="PNAME" value="pName" />
+		<property name="PTITLE" value="pTitle" />
+		<property name="PBRAND" value="pBrand" />
+		<property name="UNIQUENAME" value="uniqueName" />
+		<property name="PRICE" value="price" />
+		<property name="PDETAIL" value="pDetail" />
+		<property name="P_IMGADDR" value="p_imgAddr" />
+		<property name="REGDATE" value="regdate" />
+
+		<property name="TABLE_USERINFO" value="userinfo" />
+		<property name="COL_USERID" value="userId" />
+		<property name="COL_USERPW" value="userPw" />
+		<property name="COL_USERNAME" value="userName" />
+		<property name="COL_USERPHONE" value="userPhone" />
+		<property name="COL_USEREMAIL" value="userEmail" />
+		<property name="COL_USERZIPCODE" value="userZipCode" />
+		<property name="COL_USERADDR" value="userAddr" />
+		<property name="COL_USESRADDRDETAIL" value="userAddrDetail" />
+		<property name="COL_USERBIRTH" value="userBirth" />
+		<property name="COL_GENDER" value="gender"/>
+
+		<property name="TABLE_CART" value="cart" />
+		<property name="COL_USERID" value="userId" />
+		<property name="COL_QUANTITY" value="quantity" />
+		<property name="COL_PRICE" value="price" />
+		
+		<property name="HEIGHT" value="height"/>
+		<property name="WEIGHT" value="weight"/>
+		<property name="REVIEWS" value="reviews"/>
+		<property name="PSIZE" value="psize"/>
+		<property name="TABLE_RECOMMAND" value="recommand"/>
+		
+	</properties>
+
+	<typeAliases>
+		<typeAlias type="com.itwill.command.CartVO" alias="CartVO" />
+		<typeAlias type="com.itwill.command.UserVO" alias="UserVO" />
+		<typeAlias type="com.itwill.command.ProductVO"
+			alias="ProductVO" />
+		<typeAlias type="com.itwill.command.AdminVO" alias="AdminVO" />
+		<typeAlias type="com.itwill.command.AgeChartVO" alias="AgeChartVO"/>
+		<typeAlias type="com.itwill.command.RecommandVO" alias="RecommandVO"/>
+	</typeAliases>
+
+
+</configuration>
+  	

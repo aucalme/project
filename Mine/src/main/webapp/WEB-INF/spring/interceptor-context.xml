@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- Interceptor 설정 -->
+	<beans:bean id="authInterceptor"
+		class="com.itwill.util.interceptor.AuthInterceptor"></beans:bean>
+	<beans:bean id="signedInInterceptor"
+		class="com.itwill.util.interceptor.SignedInInterceptor"></beans:bean>
+		
+
+	<beans:bean id="adminAuthHandler" class="com.itwill.util.interceptor.AdminAuthHandler"></beans:bean>
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/adminpage"/>
+			<mapping path="/admin/adminchat"/>
+			<beans:ref bean="adminAuthHandler"/>
+		</interceptor>
+			<interceptor><!-- 게시판 기능들 중 로그인이 필수인 서비스들 -->
+			<mapping path="/user/myPageCheck"/>
+			<mapping path="/user/cart"/>
+			<mapping path="/board/payment"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		<interceptor><!-- 아이디/패스워드 확인 후 로그인 성공/실패 처리 -->
+			<mapping path="/user/userLogin"/>
+			<beans:ref bean="signedInInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+
+</beans:beans>

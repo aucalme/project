@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwill.admin.mapper.AdminMapper">
+
+
+	<update id="authNum">
+		update mn5544 set auth= #{ranNum}
+	</update>
+
+	<select id="selectEmail" resultType="String">
+		select email from mn5544
+	</select>
+
+	<select id="selectAuth" resultType="String">
+		select auth from mn5544
+	</select>
+
+	<select id="checkAdmin" resultType="AdminVO">
+		select * from mn5544 where
+		adminid= #{adminId} and adminpw= #{adminPw} and auth= #{auth}
+	</select>
+
+	<insert id="insert">
+		insert into
+		product(pno,pcategory,pname,ptitle,pbrand,uniquename,price,pdetail,p_imgaddr)
+		values(pno_seq.nextval,#{pCategory}, #{pName}, #{pTitle}, #{pBrand}, #{uniqueName},
+		#{price}, #{pDetail}, #{p_imgAddr})
+	</insert>
+	
+	<update id="update">
+		update product set pName = #{pName},
+		price = #{price},
+		pCategory =
+		#{pCategory},
+		pBrand=#{pBrand},
+		uniqueName=#{uniqueName},
+		pTitle=#{pTitle},
+		pDetail=#{pDetail}
+
+		<if test="p_imgAddr != null">, p_imgAddr = #{p_imgAddr}</if>
+		where pno = #{pno}
+	</update>
+
+	<select id="getProductList" resultType="ProductVO">
+		select * from product
+	</select>
+
+	<delete id="delete">
+		delete from product where pno in
+		<!--in (?,?,?,?,?) 의 방식으로 전달받은 pno를 삭제 collection = 전달받은 인자 list, Array만 
+			가능 item : 전달받은 인자 값을 alias 명으로 대체 open : 구문이 시작될때 삽입할 문자열 close : 구문이 종료될때 
+			삽입할 문자열 separator : 반복 되는 사이에 출력할 문자열 -->
+		<foreach item="pno" collection="list" open="(" close=")"
+			separator=",">
+			#{pno}
+		</foreach>
+	</delete>
+
+
+	<select id="getImgAddr" resultType="ProductVO">
+		select p_imgAddr from product where pno in
+		<!--in (?,?,?,?,?) 의 방식으로 전달받은 pno를 찾음 collection = 전달받은 인자 list, Array만 
+			가능 item : 전달받은 인자 값을 alias 명으로 대체 open : 구문이 시작될때 삽입할 문자열 close : 구문이 종료될때 
+			삽입할 문자열 separator : 반복 되는 사이에 출력할 문자열 -->
+		<foreach item="pno" collection="list" open="(" close=")"
+			separator=",">
+			#{pno}
+		</foreach>
+	</select>
+
+	<select id="getFilteredList" resultType="ProductVO">
+		<![CDATA[select * from product where]]>
+		<if test="category.size !=0"> pcategory in <foreach item="category" collection="category" open="("
+				close=")" separator=","> #{category} </foreach>and</if>
+		<if test="minPrice !=0"><![CDATA[ price>=#{minPrice} and]]></if>
+		<if test="maxPrice !=0"><![CDATA[ price<=#{maxPrice} and]]></if>
+		<if test="searchType=='브랜드'">pbrand like '%'||#{searchWord}||'%' and</if>
+		<if test="searchType=='이름'">pname like '%'||#{searchWord}||'%' and</if>
+		1=1
+	</select>
+</mapper>

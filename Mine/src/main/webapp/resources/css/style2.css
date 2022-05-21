@@ -1,0 +1,42 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+#findId {
+    display: flex;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.block {
+    width: 400px;
+    height: 400px;
+    background-color: rgb(250, 248, 248);
+    border-radius: 2%;
+}
+.block h1 {
+    text-align: center;
+    margin: 50px 0 0 0;
+}
+.block p {
+    text-align: center;
+}
+.user input{
+    padding: 15px 60px;
+    margin: 20px 50px;
+    border-radius: 50px;
+}
+.user button {
+    padding: 10px 120px;
+    margin: 0 50px 20px 50px;
+    background-color: #000;
+    color: #fff;
+}
+.block a {
+    text-decoration: none;
+    margin-left: 100px;
+    color: #333;
+}
